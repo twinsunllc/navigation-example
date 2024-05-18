@@ -7,6 +7,15 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(80);
 
+  Widget _buildBackButton(BuildContext context) {
+    return BackButton(
+      onPressed: () {
+        NavigationBloc().popFromStack();
+        Navigator.of(context).pop();
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<List<Object>>(
@@ -17,7 +26,12 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
         final pageCount = stack.length;
 
         return AppBar(
-          title: Text('$pageCount Pages'),
+          leading: pageCount > 0 //
+              ? _buildBackButton(context)
+              : null,
+          title: pageCount > 0 //
+              ? Text('Screen $pageCount')
+              : const Text('Home Screen'),
         );
       },
     );

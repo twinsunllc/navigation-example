@@ -14,4 +14,9 @@ class NavigationBloc {
   void pushToStack(Route route) {
     _stackSubject.add([..._stackSubject.value, route]);
   }
+
+  void popFromStack() {
+    final updatedStack = List<Route>.from(_stackSubject.value)..removeLast();
+    _stackSubject.add(updatedStack);
+  }
 }
