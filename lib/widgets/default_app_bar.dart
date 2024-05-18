@@ -12,7 +12,7 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
     return StreamBuilder<List<Object>>(
       stream: NavigationBloc().stackStream,
       initialData: const [],
-      builder: (BuildContext context, AsyncSnapshot snapshot) {
+      builder: (_, AsyncSnapshot snapshot) {
         final stack = snapshot.data!;
         final pageCount = stack.length;
 

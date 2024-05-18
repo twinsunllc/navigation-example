@@ -9,7 +9,7 @@ class HomeScreen extends StatelessWidget {
     return const Scaffold(
       appBar: DefaultAppBar(),
       body: Center(
-        child: Text('Hello'),
+        child: Text('Home'),
       ),
     );
   }
