@@ -48,18 +48,15 @@ class _DefaultAppBarState extends State<DefaultAppBar> {
     });
   }
 
-  Widget _buildBackButton() {
-    return BackButton(
-      onPressed: NavigationBloc().popFromStack,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: _pageCount > 0 //
-          ? _buildBackButton()
-          : null,
+      leading: Visibility(
+        visible: _pageCount > 0,
+        child: BackButton(
+          onPressed: NavigationBloc().popFromStack,
+        ),
+      ),
       title: Text('Tab ${_currentTab + 1} Screen ${_pageCount + 1}'),
     );
   }
