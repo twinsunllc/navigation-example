@@ -42,22 +42,13 @@ class _NavigationScreenState extends State<NavigationScreen> with SingleTickerPr
     return Scaffold(
       appBar: const DefaultAppBar(),
       bottomNavigationBar: const DefaultBottomNavigationBar(),
-      body: Navigator(
-        key: NavigationBloc().tabNavigatorKey,
-        onGenerateRoute: (_) {
-          return MaterialPageRoute(
-            builder: (_) {
-              return TabBarView(
-                controller: _tabController,
-                children: const [
-                  TabOne(),
-                  TabTwo(),
-                  TabThree(),
-                ],
-              );
-            },
-          );
-        },
+      body: TabBarView(
+        controller: _tabController,
+        children: const [
+          TabOne(),
+          TabTwo(),
+          TabThree(),
+        ],
       ),
     );
   }

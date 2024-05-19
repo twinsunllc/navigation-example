@@ -8,7 +8,7 @@ class NavigationBloc {
 
   static final NavigationBloc _instance = NavigationBloc._internal();
 
-  final GlobalKey<NavigatorState> tabNavigatorKey = GlobalKey();
+  final List<GlobalKey<NavigatorState>> tabNavigatorKeys = List.generate(3, (_) => GlobalKey());
 
   final BehaviorSubject<int> _currentTabSubject = BehaviorSubject.seeded(0);
   final BehaviorSubject<Map<int, List<Route>>> _tabStacksSubject = BehaviorSubject.seeded({});
@@ -17,7 +17,7 @@ class NavigationBloc {
   Stream<Map<int, List<Route>>> get tabStacksStream => _tabStacksSubject.stream;
 
   int get currentTab => _currentTabSubject.value;
-  Map<int, List<Route>> get _currentStacks => Map.of(_tabStacksSubject.value);
+  Map<int, List<Route>> get currentStacks => Map.of(_tabStacksSubject.value);
 
   void setCurrentTab(int index) {
     _currentTabSubject.add(index);
@@ -25,23 +25,23 @@ class NavigationBloc {
 
   void pushToStack(Route route, [int? tab]) {
     tab ??= currentTab;
-    final stacks = _currentStacks..[tab] ??= [];
+    final stacks = currentStacks..[tab] ??= [];
     stacks[tab] = [...stacks[tab]!, route];
     _tabStacksSubject.add(stacks);
-    tabNavigatorKey.currentState!.push(route);
+    tabNavigatorKeys[tab].currentState!.push(route);
   }
 
   void popFromStack([int? tab]) {
     tab ??= currentTab;
-    final stacks = _currentStacks..[tab]!.removeLast();
+    final stacks = currentStacks..[tab]!.removeLast();
     _tabStacksSubject.add(stacks);
-    tabNavigatorKey.currentState!.pop();
+    tabNavigatorKeys[tab].currentState!.pop();
   }
 
   void clearStack([int? tab]) {
     tab ??= currentTab;
-    final stacks = _currentStacks..[tab] = [];
+    final stacks = currentStacks..[tab] = [];
     _tabStacksSubject.add(stacks);
-    tabNavigatorKey.currentState!.popUntil((route) => route.isFirst);
+    tabNavigatorKeys[tab].currentState!.popUntil((route) => route.isFirst);
   }
 }

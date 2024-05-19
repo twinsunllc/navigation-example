@@ -37,6 +37,7 @@ class _DefaultAppBarState extends State<DefaultAppBar> {
   void _onTabChanged(int index) {
     setState(() {
       _currentTab = index;
+      _pageCount = NavigationBloc().currentStacks[index]?.length ?? 0;
     });
   }
 
@@ -59,9 +60,7 @@ class _DefaultAppBarState extends State<DefaultAppBar> {
       leading: _pageCount > 0 //
           ? _buildBackButton()
           : null,
-      title: _pageCount > 0 //
-          ? Text('Screen $_pageCount')
-          : Text('Tab ${_currentTab + 1}'),
+      title: Text('Tab ${_currentTab + 1} Screen ${_pageCount + 1}'),
     );
   }
 }
