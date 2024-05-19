@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:navigation_example/widgets/default_app_bar.dart';
 import 'package:navigation_example/widgets/push_screen_button.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -7,17 +6,14 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: DefaultAppBar(),
-      body: Padding(
-        padding: EdgeInsets.all(32.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            PushScreenButton(),
-          ],
-        ),
+    return const Padding(
+      padding: EdgeInsets.all(32.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          PushScreenButton(),
+        ],
       ),
     );
   }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:navigation_example/screens/home_screen.dart';
+import 'package:navigation_example/screens/navigation_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // [MaterialApp] provides our top level [Navigator].
     return MaterialApp(
       title: 'Navigation Demo',
       theme: ThemeData(
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
           foregroundColor: Colors.white70,
         ),
       ),
-      home: const HomeScreen(),
+      home: const NavigationScreen(),
     );
   }
 }

@@ -11,7 +11,6 @@ class PushScreenButton extends StatelessWidget {
       onPressed: () {
         final route = MaterialPageRoute(builder: (_) => const NextScreen());
         NavigationBloc().pushToStack(route);
-        Navigator.of(context).push(route);
       },
       child: const Text('Push Next Screen'),
     );

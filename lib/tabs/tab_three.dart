@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:navigation_example/widgets/pop_all_button.dart';
 import 'package:navigation_example/widgets/push_screen_button.dart';
 
-class NextScreen extends StatelessWidget {
-  const NextScreen({super.key});
+class TabThree extends StatelessWidget {
+  const TabThree({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +13,6 @@ class NextScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           PushScreenButton(),
-          PopAllButton(),
         ],
       ),
     );

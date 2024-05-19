@@ -7,10 +7,7 @@ class PopAllButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {
-        NavigationBloc().clearStack();
-        Navigator.of(context).popUntil(ModalRoute.withName('/'));
-      },
+      onPressed: NavigationBloc().clearStack,
       child: const Text('Pop All Screens'),
     );
   }
