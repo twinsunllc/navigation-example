@@ -9,7 +9,7 @@ class NavigationBloc {
   static final NavigationBloc _instance = NavigationBloc._internal();
 
   final BehaviorSubject<List<Route>> _stackSubject = BehaviorSubject.seeded([]);
-  Stream<List<Object>> get stackStream => _stackSubject.stream;
+  Stream<List<Route>> get stackStream => _stackSubject.stream;
 
   void pushToStack(Route route) {
     _stackSubject.add([..._stackSubject.value, route]);
@@ -18,5 +18,9 @@ class NavigationBloc {
   void popFromStack() {
     final updatedStack = List<Route>.from(_stackSubject.value)..removeLast();
     _stackSubject.add(updatedStack);
+  }
+
+  void clearStack() {
+    _stackSubject.add([]);
   }
 }

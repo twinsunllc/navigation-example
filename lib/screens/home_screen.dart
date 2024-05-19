@@ -9,11 +9,12 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       appBar: DefaultAppBar(),
-      body: Center(
+      body: Padding(
+        padding: EdgeInsets.all(32.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text('Home'),
             PushScreenButton(),
           ],
         ),

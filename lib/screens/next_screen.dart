@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:navigation_example/widgets/default_app_bar.dart';
+import 'package:navigation_example/widgets/pop_all_button.dart';
 import 'package:navigation_example/widgets/push_screen_button.dart';
 
 class NextScreen extends StatelessWidget {
@@ -9,12 +10,14 @@ class NextScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       appBar: DefaultAppBar(),
-      body: Center(
+      body: Padding(
+        padding: EdgeInsets.all(32.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text('Next Screen'),
             PushScreenButton(),
+            PopAllButton(),
           ],
         ),
       ),
